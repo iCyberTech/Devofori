@@ -206,14 +206,39 @@
             flex: 1;
             min-width: 300px;
             text-align: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
+            position: relative;
+            height: 400px;
+            overflow: hidden;
             border-radius: 15px;
             box-shadow: var(--shadow);
+        }
+
+        .hero-slideshow {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
             animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
         }
 
         @keyframes float {
@@ -651,6 +676,16 @@
             transform: translateY(-3px);
         }
 
+        /* Lazy loading styles */
+        img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        img[loading="lazy"].loaded {
+            opacity: 1;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero-text h1 {
@@ -756,6 +791,10 @@
             .skill-info {
                 font-size: 0.85rem;
             }
+
+            .hero-image {
+                height: 350px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -790,6 +829,10 @@
                 font-size: 1.1rem;
                 bottom: 20px;
                 right: 20px;
+            }
+
+            .hero-image {
+                height: 300px;
             }
         }
 
@@ -855,7 +898,17 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Developer">
+                    <div class="hero-slideshow">
+                        <div class="hero-slide active">
+                            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Developer working" loading="lazy">
+                        </div>
+                        <div class="hero-slide">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Developer coding" loading="lazy">
+                        </div>
+                        <div class="hero-slide">
+                            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Developer meeting" loading="lazy">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -988,7 +1041,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="School Management System">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="School Management System" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3>School Management System</h3>
@@ -1001,7 +1054,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Employee Management System">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Employee Management System" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3>Employee Management System</h3>
@@ -1014,7 +1067,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="SwiftCard">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="SwiftCard" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3>SwiftCard</h3>
@@ -1027,7 +1080,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Eresults App">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Eresults App" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3>Eresults App</h3>
@@ -1040,7 +1093,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="ArenaOfGrace">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="ArenaOfGrace" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3>ArenaOfGrace</h3>
@@ -1053,7 +1106,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="CyberLearn">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="CyberLearn" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3>CyberLearn</h3>
@@ -1315,6 +1368,49 @@
 
         setViewportHeight();
         window.addEventListener('resize', setViewportHeight);
+
+        // Hero image slideshow
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            heroSlides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            showSlide(currentSlide);
+        }
+
+        // Start slideshow
+        if (heroSlides.length > 0) {
+            showSlide(0);
+            setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        // Lazy loading for images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            
+            const lazyLoad = function(target) {
+                const io = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.src;
+                            img.classList.add('loaded');
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+
+                io.observe(target);
+            };
+
+            lazyImages.forEach(lazyLoad);
+        });
     </script>
 </body>
 </html>
