@@ -689,6 +689,179 @@
             transform: translateY(-3px);
         }
 
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .chatbot-toggle:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .chatbot-toggle i {
+            font-size: 1.5rem;
+        }
+
+        .chatbot-window {
+            width: 350px;
+            height: 500px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-window.active {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .chatbot-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f5f5f5;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .bot-message {
+            background-color: white;
+            color: #333;
+            border-top-left-radius: 5px;
+            align-self: flex-start;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-message {
+            background-color: var(--primary-color);
+            color: white;
+            border-top-right-radius: 5px;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            background-color: white;
+            border-top: 1px solid #eee;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .chatbot-input button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-input button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .typing-indicator {
+            display: flex;
+            padding: 10px 15px;
+            background-color: white;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            width: fit-content;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: #666;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: typing 1s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
         /* Lazy loading styles */
         img[loading="lazy"] {
             opacity: 0;
@@ -808,6 +981,16 @@
             .hero-image {
                 height: 350px;
             }
+
+            .chatbot-container {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .chatbot-window {
+                width: 300px;
+                height: 450px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -846,6 +1029,21 @@
 
             .hero-image {
                 height: 300px;
+            }
+
+            .chatbot-container {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .chatbot-toggle {
+                width: 50px;
+                height: 50px;
+            }
+
+            .chatbot-window {
+                width: 280px;
+                height: 400px;
             }
         }
 
@@ -1210,18 +1408,18 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formspree.io/f/xoveakdz" method="POST">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
+                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject">
+                            <input type="text" class="form-control" name="subject" placeholder="Subject">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                            <textarea class="form-control" name="message" placeholder="Your Message" required></textarea>
                         </div>
                         <button type="submit" class="btn">Send Message</button>
                     </form>
@@ -1252,6 +1450,32 @@
     <button class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <h3>DevOfori Assistant</h3>
+                <button class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages">
+                <div class="message bot-message">
+                    Hi there! I'm DevOfori's assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message..." id="chatbotInput">
+                <button id="chatbotSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script>
@@ -1353,13 +1577,41 @@
             observer.observe(skillsSection);
         }
 
-        // Form submission
+        // Form submission with Formspree
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
+            contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                alert('Thank you for your message! I will get back to you soon.');
-                contactForm.reset();
+                
+                const formData = new FormData(contactForm);
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.textContent;
+                
+                try {
+                    submitButton.textContent = 'Sending...';
+                    submitButton.disabled = true;
+                    
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        alert('Thank you for your message! I will get back to you soon.');
+                        contactForm.reset();
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    alert('There was a problem sending your message. Please try again later.');
+                    console.error('Form submission error:', error);
+                } finally {
+                    submitButton.textContent = originalButtonText;
+                    submitButton.disabled = false;
+                }
             });
         }
 
@@ -1423,6 +1675,168 @@
             };
 
             lazyImages.forEach(lazyLoad);
+        });
+
+        // Chatbot functionality
+        const chatbotToggle = document.querySelector('.chatbot-toggle');
+        const chatbotWindow = document.querySelector('.chatbot-window');
+        const chatbotClose = document.querySelector('.chatbot-close');
+        const chatbotMessages = document.querySelector('.chatbot-messages');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+
+        // Toggle chatbot window
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('active');
+        });
+
+        // Close chatbot window
+        chatbotClose.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+        });
+
+        // Website content for chatbot to reference
+        const websiteContent = {
+            about: [
+                "I'm Ofori Richard Rockson, a passionate software developer based in Dubai, Maritime City.",
+                "I specialize in creating exceptional digital experiences through mobile and web applications.",
+                "I have a Bachelor's degree in Computer Science from the University of the People, USA.",
+                "My skills include Mobile App Development (95%), Full-stack Web Development (90%), React Native & Ionic (92%), Django & Firebase (88%), and AWS Cloud Computing (85%)."
+            ],
+            services: [
+                "Mobile App Development: Building high-performance, cross-platform mobile applications for iOS and Android using React Native and Ionic frameworks.",
+                "Web Development: Creating responsive, user-friendly websites and web applications with modern technologies and best practices.",
+                "Backend Development: Developing robust server-side applications and APIs using Django and Firebase for seamless data management.",
+                "Cloud Solutions: Implementing scalable cloud infrastructure and services using AWS to optimize performance and reliability.",
+                "Database Design: Designing efficient database structures and implementing secure data storage solutions for applications.",
+                "Maintenance & Support: Providing ongoing maintenance, updates, and technical support to ensure your applications run smoothly."
+            ],
+            projects: [
+                "School Management System: A comprehensive platform for educational institutions to manage students, teachers, courses, and administrative tasks.",
+                "Employee Management System: An enterprise solution for HR departments to manage employee records, attendance, payroll, and performance.",
+                "SwiftCard: A mobile application for digital business cards with NFC support, making professional networking seamless and paperless.",
+                "Eresults App: An educational application that provides students with instant access to their examination results and academic progress.",
+                "ArenaOfGrace: A community platform for spiritual growth and connection. Visit at www.arenaofgrace.com.",
+                "CyberLearn: An e-learning platform offering cybersecurity courses with interactive content and certification."
+            ],
+            experience: [
+                "Software Developer at WeOne (October 2024 - Present): Developing innovative software solutions and collaborating with cross-functional teams to deliver high-quality applications.",
+                "Software Developer at NAKDEF (January 2021 - September 2023): Collaborated with cross-functional teams to define, design, and ship new features for mobile applications.",
+                "Education: Bachelor of Science in Computer Science from University Of The People, USA, Pasadena.",
+                "Certifications: Certified React Native Developer - Meta, Full Stack Development Certificate - IBM."
+            ],
+            contact: [
+                "You can contact me through the contact form on this page or directly via:",
+                "Location: Dubai, Maritime City",
+                "Email: oforirockson@proton.me",
+                "Phone: +971 58 254 0832"
+            ],
+            general: [
+                "I'm a dedicated and skilled software developer with expertise in mobile app development for both iOS and Android platforms, as well as full-stack website development.",
+                "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities.",
+                "Feel free to ask me anything about my services, projects, or experience!"
+            ]
+        };
+
+        // Function to find the most relevant response
+        function findBestResponse(userInput) {
+            const input = userInput.toLowerCase();
+            
+            // Check for specific keywords
+            if (input.includes('about') || input.includes('who are you') || input.includes('background')) {
+                return websiteContent.about;
+            } else if (input.includes('service') || input.includes('what do you do') || input.includes('offer')) {
+                return websiteContent.services;
+            } else if (input.includes('project') || input.includes('work') || input.includes('portfolio')) {
+                return websiteContent.projects;
+            } else if (input.includes('experience') || input.includes('job') || input.includes('work history')) {
+                return websiteContent.experience;
+            } else if (input.includes('contact') || input.includes('email') || input.includes('phone') || input.includes('reach')) {
+                return websiteContent.contact;
+            } else if (input.includes('hi') || input.includes('hello') || input.includes('hey')) {
+                return ["Hello! How can I help you today?"];
+            } else if (input.includes('thank')) {
+                return ["You're welcome! Is there anything else I can help you with?"];
+            } else {
+                // If no specific match, search through all content for relevant phrases
+                const allContent = [...websiteContent.about, ...websiteContent.services, 
+                                  ...websiteContent.projects, ...websiteContent.experience,
+                                  ...websiteContent.contact, ...websiteContent.general];
+                
+                const relevantResponses = allContent.filter(content => 
+                    content.toLowerCase().includes(input) || 
+                    input.split(' ').some(word => 
+                        word.length > 3 && content.toLowerCase().includes(word)
+                    )
+                );
+                
+                return relevantResponses.length > 0 ? 
+                    relevantResponses.slice(0, 3) : 
+                    ["I'm not sure I understand. Could you rephrase your question or ask about my services, projects, or experience?"];
+            }
+        }
+
+        // Function to add a message to the chat
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Function to show typing indicator
+        function showTyping() {
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('typing-indicator');
+            typingDiv.innerHTML = '<span></span><span></span><span></span>';
+            chatbotMessages.appendChild(typingDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            return typingDiv;
+        }
+
+        // Function to hide typing indicator
+        function hideTyping(typingDiv) {
+            typingDiv.remove();
+        }
+
+        // Handle user input
+        function handleUserInput() {
+            const userInput = chatbotInput.value.trim();
+            if (!userInput) return;
+            
+            // Add user message
+            addMessage(userInput, true);
+            chatbotInput.value = '';
+            
+            // Show typing indicator
+            const typingIndicator = showTyping();
+            
+            // Simulate thinking time
+            setTimeout(() => {
+                hideTyping(typingIndicator);
+                
+                // Get bot response
+                const responses = findBestResponse(userInput);
+                
+                // Add bot responses
+                responses.forEach((response, index) => {
+                    setTimeout(() => {
+                        addMessage(response);
+                    }, index * 500);
+                });
+            }, 1500);
+        }
+
+        // Send message on button click
+        chatbotSend.addEventListener('click', handleUserInput);
+
+        // Send message on Enter key
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserInput();
+            }
         });
     </script>
 </body>
