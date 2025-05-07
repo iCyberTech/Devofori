@@ -872,6 +872,146 @@
             opacity: 1;
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--accent-color);
+        }
+
+        .modal-body {
+            margin-bottom: 25px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* Custom Alert Styles */
+        .custom-alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            max-width: 350px;
+            display: flex;
+            align-items: center;
+            z-index: 3000;
+            transform: translateX(120%);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .custom-alert.active {
+            transform: translateX(0);
+        }
+
+        .custom-alert.success {
+            border-left-color: #2ecc71;
+        }
+
+        .custom-alert.error {
+            border-left-color: #e74c3c;
+        }
+
+        .custom-alert-icon {
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .custom-alert.success .custom-alert-icon {
+            color: #2ecc71;
+        }
+
+        .custom-alert.error .custom-alert-icon {
+            color: #e74c3c;
+        }
+
+        .custom-alert-content h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .custom-alert-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .custom-alert-close {
+            margin-left: 15px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .custom-alert-close:hover {
+            color: var(--accent-color);
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero-text h1 {
@@ -1044,6 +1184,14 @@
             .chatbot-window {
                 width: 280px;
                 height: 400px;
+            }
+
+            .modal {
+                padding: 20px;
+            }
+
+            .modal-header h3 {
+                font-size: 1.3rem;
             }
         }
 
@@ -1272,8 +1420,8 @@
                         <h3>School Management System</h3>
                         <p>A comprehensive platform for educational institutions to manage students, teachers, courses, and administrative tasks.</p>
                         <div class="project-links">
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="live-demo-btn" data-project="School Management System"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="code-btn" data-project="School Management System"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </div>
@@ -1285,8 +1433,8 @@
                         <h3>Employee Management System</h3>
                         <p>An enterprise solution for HR departments to manage employee records, attendance, payroll, and performance.</p>
                         <div class="project-links">
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="live-demo-btn" data-project="Employee Management System"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="code-btn" data-project="Employee Management System"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </div>
@@ -1298,8 +1446,8 @@
                         <h3>SwiftCard</h3>
                         <p>A mobile application for digital business cards with NFC support, making professional networking seamless and paperless.</p>
                         <div class="project-links">
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="live-demo-btn" data-project="SwiftCard"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="code-btn" data-project="SwiftCard"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </div>
@@ -1311,8 +1459,8 @@
                         <h3>Eresults App</h3>
                         <p>An educational application that provides students with instant access to their examination results and academic progress.</p>
                         <div class="project-links">
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="live-demo-btn" data-project="Eresults App"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="code-btn" data-project="Eresults App"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </div>
@@ -1325,7 +1473,7 @@
                         <p>A community platform for spiritual growth and connection. Visit at www.arenaofgrace.com.</p>
                         <div class="project-links">
                             <a href="http://www.arenaofgrace.com" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="code-btn" data-project="ArenaOfGrace"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </div>
@@ -1337,8 +1485,8 @@
                         <h3>CyberLearn</h3>
                         <p>An e-learning platform offering cybersecurity courses with interactive content and certification.</p>
                         <div class="project-links">
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="live-demo-btn" data-project="CyberLearn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="code-btn" data-project="CyberLearn"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </div>
@@ -1491,6 +1639,85 @@
         </div>
     </div>
 
+    <!-- Modal for Live Demo -->
+    <div class="modal-overlay" id="demoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Book a Demo Session</h3>
+                <button class="modal-close" id="closeDemoModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="demoForm" action="https://formspree.io/f/xoveakdz" method="POST">
+                    <input type="hidden" name="project" id="demoProjectName" value="">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="phone" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" placeholder="Any specific requirements or questions?" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferredDate">Preferred Date & Time</label>
+                        <input type="datetime-local" class="form-control" name="preferredDate" id="preferredDate">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn">Request Demo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Code Request -->
+    <div class="modal-overlay" id="codeModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Request Source Code</h3>
+                <button class="modal-close" id="closeCodeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="codeForm" action="https://formspree.io/f/xoveakdz" method="POST">
+                    <input type="hidden" name="project" id="codeProjectName" value="">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="purpose" placeholder="What will you use the code for?" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="agreeTerms" required>
+                            I agree to use the code only for educational/non-commercial purposes
+                        </label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn">Request Code</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Alert -->
+    <div class="custom-alert" id="customAlert">
+        <div class="custom-alert-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="custom-alert-content">
+            <h4 id="alertTitle">Success</h4>
+            <p id="alertMessage">Your request has been submitted successfully!</p>
+        </div>
+        <button class="custom-alert-close" id="closeAlert">&times;</button>
+    </div>
+
     <!-- JavaScript -->
     <script>
         // Mobile Navigation
@@ -1614,13 +1841,13 @@
                     });
                     
                     if (response.ok) {
-                        alert('Thank you for your message! I will get back to you soon.');
+                        showAlert('Success', 'Thank you for your message! I will get back to you soon.', 'success');
                         contactForm.reset();
                     } else {
                         throw new Error('Form submission failed');
                     }
                 } catch (error) {
-                    alert('There was a problem sending your message. Please try again later.');
+                    showAlert('Error', 'There was a problem sending your message. Please try again later.', 'error');
                     console.error('Form submission error:', error);
                 } finally {
                     submitButton.textContent = originalButtonText;
@@ -1860,6 +2087,171 @@
                 heroTitle.classList.add('show');
             }, 500);
         }
+
+        // Modal functionality for Live Demo and Code buttons
+        const demoModal = document.getElementById('demoModal');
+        const codeModal = document.getElementById('codeModal');
+        const closeDemoModal = document.getElementById('closeDemoModal');
+        const closeCodeModal = document.getElementById('closeCodeModal');
+        const demoForm = document.getElementById('demoForm');
+        const codeForm = document.getElementById('codeForm');
+        const liveDemoButtons = document.querySelectorAll('.live-demo-btn');
+        const codeButtons = document.querySelectorAll('.code-btn');
+        const demoProjectName = document.getElementById('demoProjectName');
+        const codeProjectName = document.getElementById('codeProjectName');
+
+        // Show demo modal
+        liveDemoButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const project = button.getAttribute('data-project');
+                demoProjectName.value = project;
+                demoModal.classList.add('active');
+                body.style.overflow = 'hidden';
+            });
+        });
+
+        // Show code modal
+        codeButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const project = button.getAttribute('data-project');
+                codeProjectName.value = project;
+                codeModal.classList.add('active');
+                body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modals
+        closeDemoModal.addEventListener('click', () => {
+            demoModal.classList.remove('active');
+            body.style.overflow = '';
+        });
+
+        closeCodeModal.addEventListener('click', () => {
+            codeModal.classList.remove('active');
+            body.style.overflow = '';
+        });
+
+        // Close modals when clicking outside
+        demoModal.addEventListener('click', (e) => {
+            if (e.target === demoModal) {
+                demoModal.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        codeModal.addEventListener('click', (e) => {
+            if (e.target === codeModal) {
+                codeModal.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        // Form submissions for modals
+        if (demoForm) {
+            demoForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(demoForm);
+                const submitButton = demoForm.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.textContent;
+                
+                try {
+                    submitButton.textContent = 'Sending...';
+                    submitButton.disabled = true;
+                    
+                    const response = await fetch(demoForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        showAlert('Success', 'Your demo request has been submitted! I will contact you soon to schedule the session.', 'success');
+                        demoForm.reset();
+                        demoModal.classList.remove('active');
+                        body.style.overflow = '';
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    showAlert('Error', 'There was a problem submitting your request. Please try again later.', 'error');
+                    console.error('Form submission error:', error);
+                } finally {
+                    submitButton.textContent = originalButtonText;
+                    submitButton.disabled = false;
+                }
+            });
+        }
+
+        if (codeForm) {
+            codeForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(codeForm);
+                const submitButton = codeForm.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.textContent;
+                
+                try {
+                    submitButton.textContent = 'Sending...';
+                    submitButton.disabled = true;
+                    
+                    const response = await fetch(codeForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        showAlert('Success', 'Your code request has been submitted! I will review your request and get back to you soon.', 'success');
+                        codeForm.reset();
+                        codeModal.classList.remove('active');
+                        body.style.overflow = '';
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    showAlert('Error', 'There was a problem submitting your request. Please try again later.', 'error');
+                    console.error('Form submission error:', error);
+                } finally {
+                    submitButton.textContent = originalButtonText;
+                    submitButton.disabled = false;
+                }
+            });
+        }
+
+        // Custom alert functionality
+        const customAlert = document.getElementById('customAlert');
+        const alertTitle = document.getElementById('alertTitle');
+        const alertMessage = document.getElementById('alertMessage');
+        const closeAlert = document.getElementById('closeAlert');
+
+        function showAlert(title, message, type) {
+            alertTitle.textContent = title;
+            alertMessage.textContent = message;
+            
+            // Set alert type (success or error)
+            customAlert.className = 'custom-alert';
+            customAlert.classList.add(type);
+            
+            // Show alert
+            customAlert.classList.add('active');
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                customAlert.classList.remove('active');
+            }, 5000);
+        }
+
+        // Close alert manually
+        closeAlert.addEventListener('click', () => {
+            customAlert.classList.remove('active');
+        });
     </script>
 </body>
 </html>
