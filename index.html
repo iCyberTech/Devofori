@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2241229500570440"
-     crossorigin="anonymous"></script>
-    <!-- Favicon (supports multiple formats for compatibility) -->
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" href="favicon.png">
-<!-- Apple Touch Icon (for iOS devices) -->
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<!-- Android Chrome Icon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <!--For Better Compitability-->
-<link rel="manifest" href="site.webmanifest">
-<meta name="theme-color" content="#2563eb">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ofori Richard Rockson | Software Developer</title>
+    
+    <!-- Favicon in all required formats -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2563eb">
+    <meta name="msapplication-TileColor" content="#2563eb">
+    <meta name="theme-color" content="#2563eb">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -30,6 +27,9 @@
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
             --header-height: 70px;
+            --toast-success: #4caf50;
+            --toast-error: #f44336;
+            --toast-info: #2196f3;
         }
 
         * {
@@ -80,6 +80,9 @@
             z-index: 1000;
             height: var(--header-height);
             transition: var(--transition);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
         }
 
         .navbar {
@@ -135,6 +138,9 @@
             cursor: pointer;
             font-size: 1.5rem;
             z-index: 1001;
+            background: none;
+            border: none;
+            color: var(--dark-color);
         }
 
         /* Hero Section */
@@ -427,6 +433,7 @@
         .project-image {
             height: 180px;
             overflow: hidden;
+            position: relative;
         }
 
         .project-image img {
@@ -689,6 +696,51 @@
             transform: translateY(-3px);
         }
 
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            padding: 15px 20px;
+            border-radius: 5px;
+            color: white;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            max-width: 350px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background-color: var(--toast-success);
+        }
+
+        .toast.error {
+            background-color: var(--toast-error);
+        }
+
+        .toast.info {
+            background-color: var(--toast-info);
+        }
+
+        .toast i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
         /* Chatbot Styles */
         .chatbot-container {
             position: fixed;
@@ -769,6 +821,7 @@
             padding: 15px;
             overflow-y: auto;
             background-color: #f5f5f5;
+            scroll-behavior: smooth;
         }
 
         .message {
@@ -779,6 +832,12 @@
             font-size: 0.9rem;
             line-height: 1.4;
             position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .bot-message {
@@ -862,6 +921,29 @@
             50% { transform: translateY(-5px); }
         }
 
+        /* Quick action buttons for chatbot */
+        .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quick-action-btn {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 15px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quick-action-btn:hover {
+            background-color: rgba(52, 152, 219, 0.2);
+        }
+
         /* Lazy loading styles */
         img[loading="lazy"] {
             opacity: 0;
@@ -902,19 +984,21 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - var(--header-height));
-                background-color: white;
+                background-color: rgba(255, 255, 255, 0.98);
                 flex-direction: column;
                 align-items: center;
                 padding: 40px 20px;
                 transition: var(--transition);
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
+                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(10px);
             }
 
             .nav-links.active {
                 left: 0;
             }
-
+            
             .nav-links li {
                 margin: 15px 0;
             }
@@ -988,8 +1072,14 @@
             }
 
             .chatbot-window {
-                width: 300px;
-                height: 450px;
+                width: calc(100vw - 40px);
+                height: 60vh;
+                right: 20px;
+                bottom: 80px;
+            }
+            
+            .toast {
+                max-width: calc(100vw - 40px);
             }
         }
 
@@ -1042,8 +1132,22 @@
             }
 
             .chatbot-window {
-                width: 280px;
-                height: 400px;
+                width: calc(100vw - 30px);
+                height: 55vh;
+                right: 15px;
+                bottom: 70px;
+            }
+            
+            .timeline-content {
+                padding: 12px;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1rem;
+            }
+            
+            .timeline-content h4, .timeline-content p {
+                font-size: 0.85rem;
             }
         }
 
@@ -1065,10 +1169,53 @@
                 min-height: -webkit-fill-available;
                 height: calc(100vh - var(--header-height));
             }
+            
+            /* Fix for sticky hover on iOS */
+            @media (hover: none) {
+                .btn:hover, .social-icons a:hover, .back-to-top:hover, 
+                .chatbot-toggle:hover, .chatbot-input button:hover {
+                    transform: none;
+                }
+                
+                .nav-links a:hover::after {
+                    width: 0;
+                }
+            }
+        }
+        
+        /* Improved touch targets for mobile */
+        @media (pointer: coarse) {
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .btn, .btn-outline {
+                padding: 12px 28px;
+            }
+            
+            .social-icons a {
+                width: 44px;
+                height: 44px;
+                margin-right: 15px;
+            }
+            
+            .contact-icon {
+                width: 42px;
+                height: 42px;
+            }
+            
+            .project-links a {
+                margin-right: 15px;
+                padding: 5px 0;
+                display: inline-block;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <!-- Header -->
     <header id="header">
         <div class="container">
@@ -1082,9 +1229,9 @@
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="hamburger">
+                <button class="hamburger">
                     <i class="fas fa-bars"></i>
-                </div>
+                </button>
             </nav>
         </div>
     </header>
@@ -1466,6 +1613,12 @@
             <div class="chatbot-messages">
                 <div class="message bot-message">
                     Hi there! I'm DevOfori's assistant. How can I help you today?
+                    <div class="quick-actions">
+                        <button class="quick-action-btn">About</button>
+                        <button class="quick-action-btn">Services</button>
+                        <button class="quick-action-btn">Projects</button>
+                        <button class="quick-action-btn">Contact</button>
+                    </div>
                 </div>
             </div>
             <div class="chatbot-input">
@@ -1577,6 +1730,41 @@
             observer.observe(skillsSection);
         }
 
+        // Toast notification system
+        function showToast(message, type = 'info', duration = 5000) {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            let icon;
+            switch(type) {
+                case 'success':
+                    icon = '<i class="fas fa-check-circle"></i>';
+                    break;
+                case 'error':
+                    icon = '<i class="fas fa-exclamation-circle"></i>';
+                    break;
+                default:
+                    icon = '<i class="fas fa-info-circle"></i>';
+            }
+            
+            toast.innerHTML = `${icon} ${message}`;
+            toastContainer.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            // Auto-remove after duration
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, duration);
+        }
+
         // Form submission with Formspree
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
@@ -1600,13 +1788,13 @@
                     });
                     
                     if (response.ok) {
-                        alert('Thank you for your message! I will get back to you soon.');
+                        showToast('Thank you for your message! I will get back to you soon.', 'success', 5000);
                         contactForm.reset();
                     } else {
                         throw new Error('Form submission failed');
                     }
                 } catch (error) {
-                    alert('There was a problem sending your message. Please try again later.');
+                    showToast('There was a problem sending your message. Please try again later.', 'error', 5000);
                     console.error('Form submission error:', error);
                 } finally {
                     submitButton.textContent = originalButtonText;
@@ -1617,13 +1805,6 @@
 
         // Update copyright year
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Prevent scrolling when mobile menu is open
-        document.addEventListener('touchmove', function(e) {
-            if (navLinks.classList.contains('active')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
 
         // iOS viewport height fix
         function setViewportHeight() {
@@ -1684,10 +1865,14 @@
         const chatbotMessages = document.querySelector('.chatbot-messages');
         const chatbotInput = document.getElementById('chatbotInput');
         const chatbotSend = document.getElementById('chatbotSend');
+        const quickActionBtns = document.querySelectorAll('.quick-action-btn');
 
         // Toggle chatbot window
         chatbotToggle.addEventListener('click', () => {
             chatbotWindow.classList.toggle('active');
+            if (chatbotWindow.classList.contains('active')) {
+                chatbotInput.focus();
+            }
         });
 
         // Close chatbot window
@@ -1801,6 +1986,24 @@
             typingDiv.remove();
         }
 
+        // Handle quick action buttons
+        quickActionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const action = btn.textContent.toLowerCase();
+                const responses = findBestResponse(action);
+                
+                // Add user message
+                addMessage(btn.textContent, true);
+                
+                // Add bot responses
+                responses.forEach((response, index) => {
+                    setTimeout(() => {
+                        addMessage(response);
+                    }, index * 500);
+                });
+            });
+        });
+
         // Handle user input
         function handleUserInput() {
             const userInput = chatbotInput.value.trim();
@@ -1824,6 +2027,36 @@
                 responses.forEach((response, index) => {
                     setTimeout(() => {
                         addMessage(response);
+                        // Add quick actions for the first response
+                        if (index === 0 && responses.length > 1) {
+                            const quickActions = document.createElement('div');
+                            quickActions.className = 'quick-actions';
+                            quickActions.innerHTML = `
+                                <button class="quick-action-btn">About</button>
+                                <button class="quick-action-btn">Services</button>
+                                <button class="quick-action-btn">Projects</button>
+                                <button class="quick-action-btn">Contact</button>
+                            `;
+                            chatbotMessages.appendChild(quickActions);
+                            
+                            // Add event listeners to new quick action buttons
+                            document.querySelectorAll('.quick-actions .quick-action-btn').forEach(btn => {
+                                btn.addEventListener('click', () => {
+                                    const action = btn.textContent.toLowerCase();
+                                    const newResponses = findBestResponse(action);
+                                    
+                                    // Add user message
+                                    addMessage(btn.textContent, true);
+                                    
+                                    // Add bot responses
+                                    newResponses.forEach((newResponse, idx) => {
+                                        setTimeout(() => {
+                                            addMessage(newResponse);
+                                        }, idx * 500);
+                                    });
+                                });
+                            });
+                        }
                     }, index * 500);
                 });
             }, 1500);
@@ -1836,6 +2069,13 @@
         chatbotInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 handleUserInput();
+            }
+        });
+
+        // Close chatbot when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!chatbotWindow.contains(e.target) {
+                chatbotWindow.classList.remove('active');
             }
         });
     </script>
