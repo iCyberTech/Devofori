@@ -1,0 +1,27 @@
+# robots.txt for www.devorofi.com
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /cgi-bin/
+
+# Sitemap location
+Sitemap: https://www.devofori.com/sitemap.xml
+
+# Crawl delay for specific bots (optional)
+User-agent: bingbot
+Crawl-delay: 1
+
+User-agent: googlebot
+Crawl-delay: 1
+
+User-agent: yandex
+Crawl-delay: 2
+
+# Block specific file types (optional)
+User-agent: *
+Disallow: /*.pdf$
+Disallow: /*.doc$
+Disallow: /*.zip$

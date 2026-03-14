@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd
+        http://www.google.com/schemas/sitemap-video/1.1
+        http://www.google.com/schemas/sitemap-video/1.1/sitemap-video.xsd">
+    
+    <!-- Main Pages -->
+    <url>
+        <loc>https://www.devofori.com/</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://www.devofori.com/mecut.jpg</image:loc>
+            <image:title>Ofori Richard Rockson - Software Developer</image:title>
+            <image:caption>Professional software developer based in Dubai</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Home Section (Anchor) -->
+    <url>
+        <loc>https://www.devofori.com/#home</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- About Section -->
+    <url>
+        <loc>https://www.devofori.com/#about</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Services Section -->
+    <url>
+        <loc>https://www.devofori.com/#services</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Projects Section -->
+    <url>
+        <loc>https://www.devofori.com/#projects</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Experience Section -->
+    <url>
+        <loc>https://www.devofori.com/#experience</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Contact Section -->
+    <url>
+        <loc>https://www.devofori.com/#contact</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Individual Project Pages (if you have separate pages) -->
+    <!-- CramNerd Project -->
+    <url>
+        <loc>https://www.devofori.com/projects/cramnerd</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1522202176988-66273c2fd55f</image:loc>
+            <image:title>CramNerd - School Management System</image:title>
+            <image:caption>AI-powered school management platform</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Asnat AI Assistant -->
+    <url>
+        <loc>https://www.devofori.com/projects/asnat-ai</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <video:video>
+            <video:title>Asnat AI Assistant Demo</video:title>
+            <video:description>AI-powered educational assistant for personalized learning</video:description>
+            <video:content_loc>https://www.devofori.com/asnat.mp4</video:content_loc>
+            <video:thumbnail_loc>https://www.devofori.com/asnat-thumbnail.jpg</video:thumbnail_loc>
+            <video:duration>60</video:duration>
+            <video:publication_date>2026-03-14</video:publication_date>
+            <video:family_friendly>yes</video:family_friendly>
+            <video:live>no</video:live>
+        </video:video>
+    </url>
+    
+    <!-- Employee Management System -->
+    <url>
+        <loc>https://www.devofori.com/projects/employee-management</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1551288049-bebda4e38f71</image:loc>
+            <image:title>Employee Management System</image:title>
+            <image:caption>Enterprise HR management solution</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- SwiftCard Project -->
+    <url>
+        <loc>https://www.devofori.com/projects/swiftcard</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1460925895917-afdab827c52f</image:loc>
+            <image:title>SwiftCard - Digital Business Cards</image:title>
+            <image:caption>NFC-enabled digital business card application</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Eresults App -->
+    <url>
+        <loc>https://www.devofori.com/projects/eresults</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1546410531-bb4caa6b424d</image:loc>
+            <image:title>Eresults - Student Results App</image:title>
+            <image:caption>Instant access to academic results</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- ArenaOfGrace -->
+    <url>
+        <loc>https://www.arenaofgrace.com</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1521791136064-7986c2920216</image:loc>
+            <image:title>ArenaOfGrace - Spiritual Community</image:title>
+            <image:caption>Community platform for spiritual growth</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- CyberLearn -->
+    <url>
+        <loc>https://www.devofori.com/projects/cyberlearn</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1551434678-e076c223a692</image:loc>
+            <image:title>CyberLearn - Cybersecurity Courses</image:title>
+            <image:caption>E-learning platform for cybersecurity</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Service Pages -->
+    <url>
+        <loc>https://www.devofori.com/services/mobile-app-development</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.devofori.com/services/web-development</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.devofori.com/services/backend-development</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.devofori.com/services/cloud-solutions</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.devofori.com/services/database-design</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.devofori.com/services/maintenance-support</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <!-- Static Pages (if applicable) -->
+    <url>
+        <loc>https://www.devofori.com/privacy-policy</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.devofori.com/terms-of-service</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.devofori.com/sitemap.xml</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.1</priority>
+    </url>
+    
+    <!-- Blog Posts (if you have a blog) -->
+    <url>
+        <loc>https://www.devofori.com/blog</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+</urlset>
